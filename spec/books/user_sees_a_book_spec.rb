@@ -7,11 +7,12 @@ describe "User sees one book" do
     review = user.reviews.create!(body: "This is a crappy book", rating: 5, book_id: book.id)
 
     visit book_path(book)
+    # save_and_open_page
 
     expect(current_path).to eq(book_path(book))
     expect(page).to have_content(book.title)
     expect(page).to have_content (review.body)
-    expect(page).to have_content (review.author)
+    expect(page).to have_content (review.user.name)
     expect(page).to have_content (review.rating)
   end
 end
