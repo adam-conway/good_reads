@@ -5,11 +5,12 @@ class Book < ApplicationRecord
     reviews.average(:rating).to_f
   end
 
-  def highest_rating
-    reviews.maximum(:rating)
+  def highest_rated_review
+    # reviews.maximum(:rating)
+    reviews.find_by(rating: reviews.maximum(:rating))
   end
 
-  def lowest_rating
-    reviews.minimum(:rating)
+  def lowest_rated_review
+    reviews.find_by(rating: reviews.minimum(:rating))
   end
 end

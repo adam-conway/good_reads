@@ -1,7 +1,12 @@
 Title: <%= @book.title %>
 Average Rating: <%= @book.average_rating %>
-Highest Rating: <%= @book.highest_rating %>
-Lowest Rating: <%= @book.lowest_rating %>
+Highest Rating: <%= @book.highest_rated_review.rating %>
+Highest rating body: <%= @book.highest_rated_review.body %>
+Highest rating user: <%= @book.highest_rated_review.user.name %>
+
+Lowest Rating: <%= @book.lowest_rated_review.rating %>
+Lowest rating body: <%= @book.lowest_rated_review.body %>
+Lowest rating user: <%= @book.lowest_rated_review.user.name %>
 
 <% @reviews.each do |review| %>
   <%= review.body %>
