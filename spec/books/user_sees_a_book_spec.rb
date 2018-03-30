@@ -34,4 +34,14 @@ describe "User sees one book" do
 
     expect(page).to have_content ("Highest Rating: 15")
   end
+  scenario "a user sees a books lowest rating" do
+    book = Book.create!(title: "This is a book title")
+    user = User.create!(name: "Adam")
+    review = user.reviews.create!(body: "This is a crappy book", rating: 5, book_id: book.id)
+    review = user.reviews.create!(body: "This is a crappy book", rating: 15, book_id: book.id)
+
+    visit book_path(book)
+
+    expect(page).to have_content ("Lowest Rating: 5")
+  end
 end
